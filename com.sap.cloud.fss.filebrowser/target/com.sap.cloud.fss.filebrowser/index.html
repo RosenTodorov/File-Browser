@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<title>File Browser</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css" />
+<style>
+<head>
+</style>
+<link type="text/css" rel="stylesheet" href="simplePagination/simplePagination.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> </script>
+<script type="text/javascript" src="simplePagination/jquery.simplePagination.js"> </script>
+</head>
+<body>
+	<p>File Browser</p>
+	<input onclick='goBack()' type='button' />
+	<form action="upload" id="upload-form" method="post" enctype="multipart/form-data" class="upload">
+		<input type="text" name="path" class="viewer" id="pathInput" value="Path.." readonly>  
+		<input type="file" name="file" id="upload" multiple="true"> 
+		<input id="filename" name="fileName" type="hidden"/>
+		<input type="submit" id="clear" value="Upload" >
+	</form>
+	<br />
+
+	<div class="container">
+		<nav id="breadcrumb">
+			<ol class="breadcrumbs">
+			</ol>
+		</nav>
+	</div>
+	
+    <div class="download">
+		<form action="/webapi/tree/download" id="download-id" method="post" enctype="application/x-www-form-urlencoded">
+			<button type="submit" id="submit-form" name="path" class="hidden">Download</button>
+		</form>
+	</div>
+
+	<div class="delete">
+		<button type="submit" id="delete-id" name="path" onClick="submitDeleteCheckboxRequest()">Delete</button>
+	</div>
+
+	<div class="zipdownload">
+		<form action="/webapi/tree/zipdownload" id="zipdownload-id" method="post" enctype="application/x-www-form-urlencoded">
+			<button type="submit" id="your-id" name="path" onClick="submitCheckboxRequest()">DownloadAsZip</button>
+		</form>
+	</div>
+
+	<div id="showData"></div>
+	<div id="pageNumbers"></div>
+
+	<script src="js_index.js"></script>
+</body>
+</html>
